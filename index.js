@@ -1,19 +1,19 @@
 const express = require('express')
-require('dotenv').config()
+require('dotenv').config();
 var bodyParser = require('body-parser')
 const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient;
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.z6ers.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-const uri = `mongodb+srv://emaWatson:emaWatsonPotter@cluster0.z6ers.mongodb.net/emaJohnStore?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.z6ers.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+// const uri = `mongodb+srv://emaWatson:emaWatsonPotter@cluster0.z6ers.mongodb.net/emaJohnStore?retryWrites=true&w=majority`;
 
 const app = express()
 const port = 5000
 
 app.use(express.json() )
 app.use(cors())
-console.log(process.env.DB_USER);
+// console.log(process.env.DB_USER);
 
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri,  { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const productsCollection = client.db("emaJohnStore").collection("products");
   const ordersCollection = client.db("emaJohnStore").collection("orders");
